@@ -31,7 +31,15 @@ $(function () {
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   //
-  
+  var container = $(".container-fluid")
+  var textBox = container.childern()
+  $.each(textBox, function(){
+        var attribute = $(this).attr("id")
+        var storedText = localStorage.getItem(attribute)
+        var currentDiv = $(this)
+        var area = $(">textarea", currentDiv)
+        area.text(storedText)
+  })
   // TODO: Add code to display the current date in the header of the page.
 
 
