@@ -59,6 +59,8 @@ $(function () {
     area.text(storedText)
   })
   // TODO: Add code to display the current date in the header of the page.
-
+  var currentTime = dayjs().format("MMM DD, YYYY")
+  var timeEl = $("#currentDay")
+  timeEl.text(currentTime)
 
 })
