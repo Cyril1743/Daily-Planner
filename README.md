@@ -9,6 +9,6 @@ I wanted a place to visuallize my daily schedule
 # What did I learn?
 I learned how to use jQuery to write shorthand JavaScript and how to use day.JS to retrieve the date
 # Screenshot
-![Screenshot](./assets/screenshot.jpg)
+![Screenshot](./Assets/screenshot.jpg)
 # Website
 https://cyril1743.github.io/daily-planner/
