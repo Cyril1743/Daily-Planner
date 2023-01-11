@@ -24,21 +24,39 @@ $(function () {
   // attribute of each time-block be used to conditionally add or remove the
   // past, present, and future classes? How can Day.js be used to get the
   // current hour in 24-hour time?
-
+  var time = setInterval(function () {
+    var hour = dayjs().format("HH")
+    var schedule = $(".container-fluid div").filter(":even")
+    for (i = 0; i < schedule.length; i++) {
+      if (i + 9 > hour) {
+        var currentEl = schedule.get(i)
+        schedule.get(i).classList.add("future")
+        schedule.get(i).classList.remove("present")
+        schedule.get(i).classList.remove("past")
+      } else if (i + 9 == hour) {
+        schedule.get(i).classList.add("present")
+        schedule.get(i).classList.remove("future")
+        schedule.get(i).classList.remove("past")
+      } else {
+        schedule.get(i).classList.add("past")
+        schedule.get(i).classList.remove("present")
+        schedule.get(i).classList.remove("future")
+      }
+    }
+  }, 1000)
 
 
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   //
-  var container = $(".container-fluid")
-  var textBox = container.childern()
-  $.each(textBox, function(){
-        var attribute = $(this).attr("id")
-        var storedText = localStorage.getItem(attribute)
-        var currentDiv = $(this)
-        var area = $(">textarea", currentDiv)
-        area.text(storedText)
+  var container = $(".container-fluid textarea")
+  $.each(container, function () {
+    var attribute = $(this).parent().attr("id")
+    var storedText = localStorage.getItem(attribute)
+    var currentDiv = $(this).parent()
+    var area = $(">textarea", currentDiv)
+    area.text(storedText)
   })
   // TODO: Add code to display the current date in the header of the page.
 
